@@ -8,15 +8,23 @@
     gif.style.position = 'absolute'
   	gif.style.left = x + 'px'
     gif.style.right = y + 'px'
+    gif.style.height = 100
+    gif.style.width = 80
     document.body.appendChild(gif)
   }
   
-  for (let i = 0; i < 100; i++) {
-    const x = i * 150;
+  const gifWidth = 50
+  // const gifHeight = 150
+  const gifOffsetX = 30
+  const num = window.innerWidth / gifWidth
+  
+  for (let i = 0; i < num; i++) {
+
+    const x = i * gifWidth - gifOffsetX;
     createGif(x, 0)
   }
   
-  document.body.style.backgroundColor = 'red'
+  document.body.style.backgroundColor = '#ffff7b'
   document.body.style.overflow = 'hidden'
   
 </script>
