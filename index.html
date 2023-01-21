@@ -2,6 +2,7 @@
 	
   const pURL = 'https://bestanimations.com/media/tiny-earth/700959513earth-spinning-rotating-animation-58.gif'
   const sURL = 'https://bestanimations.com/media/sun/780101724yogic-sun-animation.gif'
+  const rURL = 'https://gifdb.com/images/high/simple-2d-rocket-drawing-hf72xgs1wl6r7ypp.gif'
   const gifOffsetX = 75
   const gifOffsetY = 75
   
@@ -20,13 +21,24 @@
     gif.style.top = y + 'px'
   }
   
-  function createStar () {
+  function sun () {
     const gif = document.createElement('img')
     gif.src = sURL + '#' + Math.random()
     document.body.appendChild(gif)
     gif.style.position = 'absolute'
     gif.style.left = 1 + 'px'
     gif.style.top = 1 + 'px'
+  }
+  
+  function rocket () {
+    const gif = document.createElement('img')
+    gif.src = rURL + '#' + Math.random()
+    document.body.appendChild(gif)
+    gif.style.position = 'absolute'
+    gif.style.left = 800 + 'px'
+    gif.style.bottom = 20 + 'px'
+    gif.style.width = 300 + 'px'
+    gif.style.rotate = -20 + 'deg'
   }
   
   function planetCircle (num, scale, radius) {
@@ -42,10 +54,11 @@
   function setup () {
     document.body.style.backgroundColor = bgColor
     document.body.style.overflow = 'overflow'
-    planetCircle(22, 0.3, 0)
-    setTimeout(planetCircle, 100, 22, 0.3, 150)
-    setTimeout(planetCircle, 200, 22, 0.3, 300)
-  	createStar()
+    planetCircle(1, 0.3, 0)
+    setTimeout(planetCircle, 100, 0, 0.3, 150)
+    setTimeout(planetCircle, 200, 14, 3, 300)
+  	sun()
+    rocket()
   }
     
   window.addEventListener('load', setup)
