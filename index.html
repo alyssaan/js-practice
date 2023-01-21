@@ -1,35 +1,51 @@
 <script>
 	
-  const bgColor = '#e585ca'
-  const gifURL = 'https://bestanimations.com/media/tiny-earth/700959513earth-spinning-rotating-animation-58.gif'
+  const pURL = 'https://bestanimations.com/media/tiny-earth/700959513earth-spinning-rotating-animation-58.gif'
+  const sURL = 'https://bestanimations.com/media/sun/780101724yogic-sun-animation.gif'
   const gifOffsetX = 75
   const gifOffsetY = 75
   
-  function createGif (x, y) {
+  function randomcolor() {
+        return Math.floor(Math.random() * 255);
+    }
+  
+  const bgColor = randomcolor()
+  
+  function createPlanet (x, y) {
     const gif = document.createElement('img')
-    gif.src = gifURL + '#' + Math.random()
+    gif.src = pURL + '#' + Math.random()
     document.body.appendChild(gif)
     gif.style.position = 'absolute'
     gif.style.left = x + 'px'
     gif.style.top = y + 'px'
   }
   
-  function createGifCircle (num, scale, radius) {
+  function createStar () {
+    const gif = document.createElement('img')
+    gif.src = sURL + '#' + Math.random()
+    document.body.appendChild(gif)
+    gif.style.position = 'absolute'
+    gif.style.left = 1 + 'px'
+    gif.style.top = 1 + 'px'
+  }
+  
+  function planetCircle (num, scale, radius) {
     for (let i = 0; i < num; i++) {
       const cx = window.innerWidth / 2 - gifOffsetX
       const cy = window.innerHeight / 2 - gifOffsetY
       const x = cx + Math.sin(i * scale) * radius
       const y = cy + Math.cos(i * scale) * radius
-      createGif(x, y)
+      createPlanet(x, y)
     }
   }
   
   function setup () {
     document.body.style.backgroundColor = bgColor
-    document.body.style.overflow = 'hidden'
-    createGifCircle(22, 0.3, 100)
-    setTimeout(createGifCircle, 100, 22, 0.3, 150)
-    setTimeout(createGifCircle, 200, 22, 0.3, 200)
+    document.body.style.overflow = 'overflow'
+    planetCircle(22, 0.3, 0)
+    setTimeout(planetCircle, 100, 22, 0.3, 150)
+    setTimeout(planetCircle, 200, 22, 0.3, 300)
+  	createStar()
   }
     
   window.addEventListener('load', setup)
