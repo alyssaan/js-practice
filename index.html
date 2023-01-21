@@ -1,18 +1,14 @@
 <script>
 	
   const pURL = 'https://bestanimations.com/media/tiny-earth/700959513earth-spinning-rotating-animation-58.gif'
-  const sURL = 'https://bestanimations.com/media/sun/780101724yogic-sun-animation.gif'
-  const rURL = 'https://gifdb.com/images/high/simple-2d-rocket-drawing-hf72xgs1wl6r7ypp.gif'
+  const sunURL = 'https://bestanimations.com/media/sun/780101724yogic-sun-animation.gif'
+  const aURL = 'https://cdn.edu.buncee.com/rackspace/bnc-assets/animations/63c/1456432075-Young_animation_education022516_01.gif'
+  const starURL = 'https://media1.giphy.com/media/57Y7JIqvH9okJCJYjp/giphy.gif'
   const gifOffsetX = 75
   const gifOffsetY = 75
+  const bgColor = 'black'
   
-  function randomcolor() {
-        return Math.floor(Math.random() * 255);
-    }
-  
-  const bgColor = randomcolor()
-  
-  function createPlanet (x, y) {
+  function planet (x, y) {
     const gif = document.createElement('img')
     gif.src = pURL + '#' + Math.random()
     document.body.appendChild(gif)
@@ -23,22 +19,22 @@
   
   function sun () {
     const gif = document.createElement('img')
-    gif.src = sURL + '#' + Math.random()
+    gif.src = sunURL + '#' + Math.random()
     document.body.appendChild(gif)
     gif.style.position = 'absolute'
-    gif.style.left = 1 + 'px'
-    gif.style.top = 1 + 'px'
+    gif.style.left = 400 + 'px'
+    gif.style.top = 250 + 'px'
   }
   
-  function rocket () {
+  function astronaut () {
     const gif = document.createElement('img')
-    gif.src = rURL + '#' + Math.random()
+    gif.src = aURL + '#' + Math.random()
     document.body.appendChild(gif)
     gif.style.position = 'absolute'
-    gif.style.left = 800 + 'px'
-    gif.style.bottom = 20 + 'px'
-    gif.style.width = 300 + 'px'
-    gif.style.rotate = -20 + 'deg'
+    gif.style.left = 40 + 'px'
+    gif.style.top = 15 + 'px'
+    gif.style.width = 200 + 'px'
+    gif.style.rotate = -50 + 'deg'
   }
   
   function planetCircle (num, scale, radius) {
@@ -47,18 +43,30 @@
       const cy = window.innerHeight / 2 - gifOffsetY
       const x = cx + Math.sin(i * scale) * radius
       const y = cy + Math.cos(i * scale) * radius
-      createPlanet(x, y)
+      planet(x, y)
+    }
+  }
+  
+  function stars () {
+    for (let j = 0; j < 50; j++) {
+      const gif = document.createElement('img')
+    	gif.src = starURL + '#' + Math.random()
+    	document.body.appendChild(gif)
+    	gif.style.position = 'absolute'
+    	gif.style.left = Math.random() * 900 + 'px'
+    	gif.style.top = Math.random() * 600 + 'px'
+    	gif.style.width = 150 + 'px'
+    	gif.style.height = 150 + 'px'
     }
   }
   
   function setup () {
     document.body.style.backgroundColor = bgColor
     document.body.style.overflow = 'overflow'
-    planetCircle(1, 0.3, 0)
-    setTimeout(planetCircle, 100, 0, 0.3, 150)
-    setTimeout(planetCircle, 200, 14, 3, 300)
+    setTimeout(planetCircle, 200, 23, 3, 300)
   	sun()
-    rocket()
+    astronaut()
+    stars()
   }
     
   window.addEventListener('load', setup)
