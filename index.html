@@ -1,20 +1,24 @@
 <script>
 	
-  const pURL = 'https://bestanimations.com/media/tiny-earth/700959513earth-spinning-rotating-animation-58.gif'
+  // const pURL = 'https://bestanimations.com/media/tiny-earth/700959513earth-spinning-rotating-animation-58.gif'
   const sunURL = 'https://bestanimations.com/media/sun/780101724yogic-sun-animation.gif'
   const aURL = 'https://cdn.edu.buncee.com/rackspace/bnc-assets/animations/63c/1456432075-Young_animation_education022516_01.gif'
   const starURL = 'https://media1.giphy.com/media/57Y7JIqvH9okJCJYjp/giphy.gif'
-  const gifOffsetX = 75
-  const gifOffsetY = 75
+  const gifOffsetX = -75
+  const gifOffsetY = 50
   const bgColor = 'black'
+  const pURLS = new Array ('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Rotating_earth_animated_transparent.gif/220px-Rotating_earth_animated_transparent.gif', 'https://i.gifer.com/WME4.gif', 'https://64.media.tumblr.com/60fb766d7ddc41658a8a14b8404838b2/6408ac8f95e277f6-33/s250x400/37b300379f1c9ef24a623ecaafdb4a982dc18227.gif')
+  const randomNum = Math.floor(Math.random() * pURLS.length);
   
   function planet (x, y) {
     const gif = document.createElement('img')
-    gif.src = pURL + '#' + Math.random()
+    gif.src = pURLS[randomNum] + '#' + Math.random()
     document.body.appendChild(gif)
     gif.style.position = 'absolute'
     gif.style.left = x + 'px'
     gif.style.top = y + 'px'
+    gif.style.width = 150 + 'px'
+    gif.style.height = 150 + 'px'
   }
   
   function sun () {
